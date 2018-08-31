@@ -19,6 +19,8 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.0
+    depends_on:
+      - elasticsearch
     environment:
       - TZ=Europe/Stockholm
     ports:
