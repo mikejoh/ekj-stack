@@ -1,4 +1,3 @@
-pipeline:latest
 job-dsl:latest
 workflow-aggregator:latest
 logstash:latest
