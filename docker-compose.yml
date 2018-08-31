@@ -1,0 +1,62 @@
+version: '3.6'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - $PWD/es/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - prodnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.0
+    environment:
+      - TZ=Europe/Stockholm
+    ports:
+      - 5601:5601
+    volumes:
+      - $PWD/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - prodnet
+  grafana:
+    image: grafana/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+      - GF_SERVER_ROOT_URL=http://grafana
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - $PWD/grafana/data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - prodnet
+  fluentd:
+    image: fluent/fluentd:latest
+    volumes:
+      - $PWD/fluentd/fluentd.conf:/fluentd/etc/fluentd.conf
+    environment:
+      - FLUENTD_CONF=fluentd.conf
+    ports:
+      - 24224:24224
+    networks:
+      - prodnet
+#  nginx:
+#    image: nginx
+#    ports:
+#      - 80:80
+#    logging:
+#      driver: json-file
+#    networks:
+#      - esnet
+
+networks:
+  prodnet:
