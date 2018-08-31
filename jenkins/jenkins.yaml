@@ -5,3 +5,8 @@ jenkins:
   scmCheckoutRetryCount: 3
   labelString: "master"
   noUsageStatistics: true
+
+unclassified:
+  logstashconfiguration:
+    enabled: true
+    logstashIndexer: "elasticSearch"
