@@ -1,4 +1,5 @@
 version: '3.3'
+
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
@@ -15,8 +16,7 @@ services:
       - $PWD/es/data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-    networks:
-      - prodnet
+
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.0
     environment:
@@ -25,12 +25,13 @@ services:
       - 5601:5601
     volumes:
       - $PWD/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
-    networks:
-      - prodnet
+
   jenkins:
-    image: praqma/jenkins4casc:1.0-rc2
+    build:
+      context: ./jenkins
+      args:
+        JAVA_OPTS: '-Djenkins.CLI.disabled=true'
     environment:
-      - JAVA_OPTS=-Djenkins.CLI.disabled=true
       - CASC_JENKINS_CONFIG=/var/jenkins_conf/jenkins.yaml    
     ports:
       - 8080:8080
@@ -38,9 +39,4 @@ services:
     volumes:
       - $PWD/jenkins/home:/var/jenkins_home
       - $PWD/jenkins/jenkins.yaml:/var/jenkins_conf/jenkins.yaml
-    environment:
-      - CASC_JENKINS_CONFIG=/var/jenkins_conf/jenkins.yaml    
-    networks:
-      - prodnet
-networks:
-  prodnet:
+

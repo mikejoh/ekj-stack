@@ -1,7 +1,7 @@
 jenkins:
-  systemMessage: "24.08.2018 Jenkins configured automatically by Jenkins Configuration as Code Plugin\n\n"
+  systemMessage: "This Jenkins Master are configured automatically by the Jenkins Configuration as Code Plugin\n\n"
   numExecutors: 1
   mode: NORMAL
   scmCheckoutRetryCount: 3
-  labelString: "master-label"
+  labelString: "master"
   noUsageStatistics: true
