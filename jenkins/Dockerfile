@@ -1,4 +1,4 @@
-FROM praqma/jenkins4casc:1.0-rc2
+FROM praqma/jenkins4casc:latest
 
 ARG JAVA_OPTS
 ENV JAVA_OPTS "-Djenkins.CLI.disabled=true ${JAVA_OPTS:-}"
