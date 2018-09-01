@@ -33,14 +33,11 @@ Jenkins:        http://localhost:8080
 
 ## Notes
 
-_When running this stack for the first time it may take a minute or two to start, Kibana will continuously ping Elasticsearch until it can connect_
+* When running this stack for the first time it may take a minute or two to start, Kibana will continuously ping Elasticsearch until it can connect
+* Elasticsearch and Jenkins have local directories and files mounted into the containers as volumes
+* There's a script in the `build-generator/` directory that can be used generate some simple fake build data
+* Credentials used in the context of Jenkins are _basic_ and stored in questionable ways, do not use the provided `jenkins.yaml` in production
 
-_Elasticsearch and Jenkins have local directories and files mounted into the containers_
+## Issues
 
-_There's a script in the `build-generator/` directory that can be used generate some simple fake build data_
-
-## Todo
-
-* Configure Elasticsearch as a indexer via JCasC, at the moment only enabling and setting indexer can be configured. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697)
-* Configure a couple of test pipelines etc. that runs on scheduled
-* Rewrite the build-generator script to send in fake data that looks like the one sent with the Logstash plugin
+You can only configure and enable the Logstash plugin via JCasC but not the specific Elasticsearch settings you'll need. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697). This means that when you start/restart Jenkins you'll have to configure at least the URI in **Manage Jenkins -> Configure System -> Logstash**
