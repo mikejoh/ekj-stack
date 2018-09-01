@@ -6,11 +6,23 @@ jenkins:
   labelString: "master"
   noUsageStatistics: true
 
+  slaveAgentPort: 50000
+
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+       - id: admin
+         password: admin1234
+
   authorizationStrategy:
     globalMatrix:
       grantedPermissions:
         - "Overall/Read:anonymous"
         - "Overall/Administer:authenticated"
+
+jobs:
+  - file: /var/jenkins_home/jobs_groovy/test-logstash-pipeline.groovy
 
 unclassified:
   logstashconfiguration:
