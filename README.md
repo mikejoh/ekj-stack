@@ -41,6 +41,6 @@ _There's a script in the `build-generator/` directory that can be used generate 
 
 ## Todo
 
-* Configure Elasticsearch as a indexer via JCasC, at the moment only enabling and setting indexer can be configured
+* Configure Elasticsearch as a indexer via JCasC, at the moment only enabling and setting indexer can be configured. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697)
 * Configure a couple of test pipelines etc. that runs on scheduled
 * Rewrite the build-generator script to send in fake data that looks like the one sent with the Logstash plugin
