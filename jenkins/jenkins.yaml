@@ -6,6 +6,12 @@ jenkins:
   labelString: "master"
   noUsageStatistics: true
 
+  authorizationStrategy:
+    globalMatrix:
+      grantedPermissions:
+        - "Overall/Read:anonymous"
+        - "Overall/Administer:authenticated"
+
 unclassified:
   logstashconfiguration:
     enabled: true
