@@ -28,7 +28,7 @@ services:
     volumes:
       - $PWD/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
 
-  jenkins:
+  jenkins-master:
     build:
       context: ./jenkins
       args:
@@ -41,4 +41,4 @@ services:
     volumes:
       - $PWD/jenkins/home:/var/jenkins_home
       - $PWD/jenkins/jenkins.yaml:/var/jenkins_conf/jenkins.yaml
-
+      - $PWD/jenkins/jobs_groovy/:/var/jenkins_home/jobs_groovy/
