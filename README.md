@@ -18,7 +18,7 @@ This stack are running Elasticsearch and Kibana + Jenkins (with various plugins)
 mkdir -p jenkins/home && chmod a+w jenkins/home
 mkdir -p es/data && chmod a+w es/data
 ```
-3. To run Elasticsearch you might need to tweak the vm.max_map_count kernel setting. See this [link](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html) for more info, depending on the OS you're on the way of configuring this might vary.
+3. To run Elasticsearch you might need to tweak the `vm.max_map_count` kernel setting. See this [link](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html) for more info, depending on the OS you're on the way of configuring this might vary.
 4. Start the stack with:
 ```
 docker-compose up -d
@@ -37,7 +37,7 @@ _When running this stack for the first time it may take a minute or two to start
 
 _Elasticsearch and Jenkins have local directories and files mounted into the containers_
 
-_There's a script in the build-generator/ directory that generates some simple fake build data_
+_There's a script in the `build-generator/` directory that can be used generate some simple fake build data_
 
 ## Todo
 
