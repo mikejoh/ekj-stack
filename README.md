@@ -44,7 +44,7 @@ Jenkins:        http://localhost:8080
 
 You can only configure and enable the Logstash plugin via JCasC but not the specific Elasticsearch settings you'll need. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697). This means that when you start/restart Jenkins you'll have to configure at least the URI in **Manage Jenkins -> Configure System -> Logstash** or use the following groovy-hook script to configure the plugin:
 
-```
+```groovy
 import jenkins.model.Jenkins
 import jenkins.plugins.logstash.configuration.*
 import jenkins.plugins.logstash.*
