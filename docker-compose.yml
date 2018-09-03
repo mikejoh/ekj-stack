@@ -28,7 +28,7 @@ services:
     volumes:
       - $PWD/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
 
-  jenkins-master:
+  jenkins:
     build:
       context: ./jenkins
       args:
