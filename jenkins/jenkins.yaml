@@ -22,7 +22,7 @@ jenkins:
         - "Overall/Administer:authenticated"
 
 jobs:
-  - file: /var/jenkins_home/jobs_groovy/test-logstash-pipeline.groovy
+  - file: /var/jenkins_home/groovy/jobs/test-logstash-pipeline.groovy
 
 unclassified:
   logstashconfiguration:

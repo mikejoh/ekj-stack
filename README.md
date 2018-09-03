@@ -40,4 +40,30 @@ Jenkins:        http://localhost:8080
 
 ## Issues
 
-You can only configure and enable the Logstash plugin via JCasC but not the specific Elasticsearch settings you'll need. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697). This means that when you start/restart Jenkins you'll have to configure at least the URI in **Manage Jenkins -> Configure System -> Logstash**
+### Jenkins
+
+You can only configure and enable the Logstash plugin via JCasC but not the specific Elasticsearch settings you'll need. The compatibility issue(s) with JCasC are tracked [here](https://issues.jenkins-ci.org/browse/JENKINS-52697). This means that when you start/restart Jenkins you'll have to configure at least the URI in **Manage Jenkins -> Configure System -> Logstash** or use the following groovy-hook script to configure the plugin:
+
+```
+import jenkins.plugins.logstash.configuration.*
+import jenkins.plugins.logstash.*
+import org.apache.http.client.utils.URIBuilder
+  
+def inst = Jenkins.getInstance()
+def desc = Jenkins.getInstance().getDescriptor(LogstashConfiguration.class)
+
+if(! desc.isEnabled()) {
+	desc.setEnabled(true)
+}
+
+uri = (new URIBuilder("http://elasticsearch:9200/jenkins/jobs").build())
+
+ElasticSearch es = new ElasticSearch()
+es.setUri(uri)
+
+desc.setLogstashIndexer(es)
+
+inst.save()
+```
+
+This script can then be added to the `/usr/share/jenkins/ref/init.groovy.d/` directory, scripts added to this directory will be executed in the very end of the Jenkins initialization. Remember that the URI above is hardcoded, in the context of this repository this will work fine.
