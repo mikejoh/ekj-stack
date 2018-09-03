@@ -42,3 +42,4 @@ services:
     volumes:
       - $PWD/jenkins/home:/var/jenkins_home
       - $PWD/jenkins/jenkins.yaml:/var/jenkins_conf/jenkins.yaml
+      - $PWD/jenkins/groovy/jobs:/var/jenkins_home/groovy/jobs
