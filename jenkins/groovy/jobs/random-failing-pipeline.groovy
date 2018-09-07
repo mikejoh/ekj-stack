@@ -24,11 +24,17 @@ pipelineJob('random-failing-pipeline') {
                 stage('Build') {
                     echo 'Building..'
                     sleep randSleep
+                    if (randFail < 3) {
+                        echo "Build successful!"
+                    } else {
+                        echo "Build failed!"
+                        exit 1
+                    }
                 }
                 stage('Test') {
                     def randRunTests = Math.abs(new Random().nextInt() % 5 + 1)
                     sleep randRunTests
-                    if (randFail < 7) {
+                    if (randFail < 8) {
                         echo "Tests ran successfulyl!"
                     } else {
                         echo "Tests failed!"
