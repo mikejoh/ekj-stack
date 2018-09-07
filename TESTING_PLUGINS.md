@@ -19,6 +19,8 @@ The problem we've had is that the `statistics-gatherer` plugin, when getting and
 
 Due to the appended trailing `/` it fails and Elasticsearch returns a `400` error. The problematic code are duplicated for every type of configurable URL, see this [method](https://github.com/jenkinsci/statistics-gatherer-plugin/blob/6839943fa6df8c716c2ac4f686fe67aadc37dbf8/src/main/java/org/jenkins/plugins/statistics/gatherer/StatisticsConfiguration.java#L111) as an example.
 
+We were successful in sending data to the Elasticsearch pipeline with the plugin by compiling our own branch of the plugin removing the code that forcefully adds the / at the end of the configured URL.
+
 To send some test data (structured as the plugin would send it) you can use this `curl` one-liner, the `build-raw.json` file are located in the directory `build-generator`:
 
 `curl -v -H 'Content-Type: application/json' -X POST http://localhost:9200/my-index/my-builds?pipeline=change_timestamp#/ -d @build-raw.json`
