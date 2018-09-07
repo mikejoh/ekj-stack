@@ -1,0 +1,28 @@
+{
+    "ciUrl": "http://35.189.214.233:8080/",
+    "jobName": "test-logstash-pipeline",
+    "fullJobName": "test-logstash-pipeline",
+    "number": 666,
+    "slaveInfo": {
+      "slaveName": "master",
+      "executor": "-1",
+      "label": "master"
+    },
+    "startTime": 1536317880651,
+    "endTime": 1536317880657,
+    "startedUserId": "TIMER",
+    "startedUserName": "SYSTEM",
+    "result": "INPROGRESS",
+    "duration": 0,
+    "parameters": {},
+    "scmInfo": {
+      "url": "",
+      "branch": "",
+      "commit": ""
+    },
+    "queueTime": 7,
+    "buildUrl": "job/test-logstash-pipeline/4507/",
+    "contextId": 1383539986,
+    "buildCause": "Started by timer",
+    "buildFailureCauses": []
+}
