@@ -23,8 +23,3 @@ jenkins:
 
 jobs:
   - file: /var/jenkins_home/groovy/jobs/test-logstash-pipeline.groovy
-
-unclassified:
-  logstashconfiguration:
-    enabled: true
-    logstashIndexer: "elasticSearch"
