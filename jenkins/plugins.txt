@@ -1,5 +1,7 @@
 job-dsl:latest
 workflow-aggregator:latest
-logstash:latest
 matrix-auth:latest
 statistics-gatherer:latest
+git:latest
+git-client:latest
+git-server:latest
