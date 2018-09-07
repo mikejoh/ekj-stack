@@ -23,3 +23,4 @@ jenkins:
 
 jobs:
   - file: /var/jenkins_home/groovy/jobs/test-logstash-pipeline.groovy
+  - file: /var/jenkins_home/groovy/jobs/random-failing-pipeline.groovy
