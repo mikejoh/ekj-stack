@@ -1,14 +1,16 @@
-# The EK + J stack
+# The EKJ stack
 
-This stack are running Elasticsearch and Kibana + Jenkins (with various plugins)
+Maintained by: mikejoh and pal-pq
+
+This stack is used to test Elasticsearch, Kibana and Jenkins (with various plugins), the goal is to have an environment to proof of concept shipping relevant Jenkins build/job data to Elasticsearch and visualize it with Kibana.
+
+More info on the work in progress can be found [here](https://github.com/mikejoh/ekj-stack/blob/master/TESTING_PLUGINS.md).
 
 ## Components
 
 * Elasticsearch
 * Kibana
 * Jenkins
-  * Configuration as Code
-  * Logstash
 
 ## How-to
 
@@ -30,13 +32,6 @@ Kibana:         http://localhost:5601
 Elasticsearch:  http://localhost:9200
 Jenkins:        http://localhost:8080
 ```
-
-## Notes
-
-* When running this stack for the first time it may take a minute or two to start, Kibana will continuously ping Elasticsearch until it can connect
-* Elasticsearch and Jenkins have local directories and files mounted into the containers as volumes
-* There's a script in the `build-generator/` directory that can be used generate some simple fake build data
-* Credentials used in the context of Jenkins are _basic_ and stored in questionable ways, do not use the provided `jenkins.yaml` in production
 
 ## Issues
 
