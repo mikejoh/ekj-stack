@@ -2,7 +2,7 @@
 
 Notes to selves when testing various statistics/logs gathering techniques and plugins in Jenkins. The goal is to send something useful to Elasticsearch and then visualize the data with Kibana.
 
-Plugins under testing:
+Plugins in scope:
 * ~~logstash~~
 * statistics-gatherer
 
