@@ -3,8 +3,13 @@
 Notes to selves when testing various statistics/logs gathering techniques and plugins in Jenkins. The goal is to send something useful to Elasticsearch and then visualize the data with Kibana.
 
 Plugins under testing:
-* logstash
+* ~~logstash~~
 * statistics-gatherer
+
+### Todo/Investigate
+
+* Configure statistics-gatherer with the configuration-as-code-plugin (CasC)
+* Generate build data script(s)
 
 ### statistics-gatherer plugin
 
